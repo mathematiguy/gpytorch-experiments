@@ -28,8 +28,6 @@ class PipelineOp(dsl.ContainerOp):
             command='sh',
             arguments=['-c', ' && '.join(self.commands)],
             pvolumes={
-                # Persistent volume containing the wav files
-                "/work/waha-tuhi/wav": dsl.PipelineVolume(pvc="waha-tuhi-data"),
                 # Volume for containing finished job outputs
                 "/output": self.output_dvop.volume},
             file_outputs={'output': '/output'}
